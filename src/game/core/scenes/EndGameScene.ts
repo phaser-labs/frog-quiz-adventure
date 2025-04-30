@@ -121,12 +121,17 @@ export class EndGame extends Phaser.Scene {
     `;
 
     // this.add.image(400, 430, 'frog').setScale(0.1);
-
-    const ganastes = this.add.dom(400, 60, 'h2', '', '¡Ganaste!') as Phaser.GameObjects.DOMElement;
-    ganastes.setClassName('gameFrog__ganaste');
-
-    const felicidades = this.add.dom(400, 120, 'h3', '', '¡felicidades!') as Phaser.GameObjects.DOMElement;
-    felicidades.setClassName('gameFrog__felicidades');
+    if (globalState.vidas === globalState.data.length) {
+      const ganastes = this.add.dom(400, 60, 'h2', '', '¡Ganaste!') as Phaser.GameObjects.DOMElement;
+      ganastes.setClassName('gameFrog__ganaste');
+      const felicidades = this.add.dom(400, 120, 'h3', '', '¡felicidades!') as Phaser.GameObjects.DOMElement;
+      felicidades.setClassName('gameFrog__felicidades');
+    } else {
+      const perdiste = this.add.dom(400, 60, 'h2', '', '¡Perdiste!') as Phaser.GameObjects.DOMElement;
+      perdiste.setClassName('gameFrog__ganaste');
+      const vuelveIntentar = this.add.dom(400, 120, 'h3', '', 'Vuelve a intentarlo') as Phaser.GameObjects.DOMElement;
+      vuelveIntentar.setClassName('gameFrog__felicidades');
+    }
 
     this.children.getAll().forEach((child: Phaser.GameObjects.GameObject) => {
       (child as Phaser.GameObjects.Sprite).setAlpha(0.6);
@@ -135,7 +140,11 @@ export class EndGame extends Phaser.Scene {
     imagen.setClassName('gameFrog__imagen-dom');
     imagen.setOrigin(0, 0);
     const htmlImagen = imagen.node as HTMLElement;
-    htmlImagen.innerHTML = `<img src="assets/images/copaTrofeo.png" alt="Una copa de color amarillo" style="width: 300px; height: auto;">`;
+    if (globalState.vidas === globalState.data.length) {
+      htmlImagen.innerHTML = `<img src="assets/images/copaTrofeo.png" alt="Una copa de color amarillo" style="width: 300px; height: auto;">`;
+    } else {
+      htmlImagen.innerHTML = `<img src="assets/images/sapoLLorando.png" alt="una rana llorando" style="width: 300px; height: auto;">`;
+    }
 
     const score = this.add.dom(260, 400, 'div', '', '') as Phaser.GameObjects.DOMElement;
     score.setClassName('gameFrog__mi-score');
