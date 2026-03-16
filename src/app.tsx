@@ -5,7 +5,7 @@ import { Audio, Col, Modal, Row } from 'books-ui';
 
 import "books-ui/styles";
 
-import FrogJumping from './game/FrogJumping';
+import FrogJumping from './game-jump-frog/FrogJumping';
 
 
 const MODALS = {
@@ -173,7 +173,7 @@ function App() {
               key={currentQuestion}
               src={`assets/audios/aud_ova-26_sld-17_${currentQuestion}.mp3`}
             />
-            <FrogJumping dataGameFrog={dataGameFrog}></FrogJumping>
+            <FrogJumping dataGameFrog={dataGameFrog} onResult={(result) => console.log(result)}></FrogJumping>
           </Col>
         </Row>
       </div>

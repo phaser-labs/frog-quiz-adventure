@@ -34,7 +34,6 @@ export class Menu extends Phaser.Scene {
     });
     this.load.on('fileprogress', function (file: Phaser.Loader.File) {
       assetText.setText('Cargando: ' + file.key);
-      console.log(file.src);
     });
     this.load.on('complete', function () {
       progressBar.destroy();
@@ -42,25 +41,25 @@ export class Menu extends Phaser.Scene {
       percentText.destroy();
       assetText.destroy();
     });
-    this.load.image('whater', 'assets/images/background.png');
-    this.load.image('frog', 'assets/images/frog.png');
-    this.load.text('bordeBox', 'assets/images/borderBox.svg');
-    this.load.image('water', 'assets/images/background.png');
-    this.load.spritesheet('rana', 'assets/images/rana.png', {
+    this.load.image('whater', 'assets/game-jump-frog/images/background.png');
+    this.load.image('frog', 'assets/game-jump-frog/images/frog.png');
+    this.load.text('bordeBox', 'assets/game-jump-frog/images/borderBox.svg');
+    this.load.image('water', 'assets/game-jump-frog/images/background.png');
+    this.load.spritesheet('rana', 'assets/game-jump-frog/images/rana.png', {
       frameWidth: 142,
       frameHeight: 218
     });
-    this.load.spritesheet('hundimiento2', 'assets/images/hundimiento2.png', {
+    this.load.spritesheet('hundimiento2', 'assets/game-jump-frog/images/hundimiento2.png', {
       frameWidth: 177,
       frameHeight: 171
     });
-    this.load.image('orilla', 'assets/images/orilla.png');
+    this.load.image('orilla', 'assets/game-jump-frog/images/orilla.png');
     // precargar sonidos
-    this.load.audio('music', 'assets/audios/swamp.wav');
-    this.load.audio('jump', 'assets/audios/jump.mp3');
-    this.load.audio('croar', 'assets/audios/croar.mp3');
-    this.load.audio('splash', 'assets/audios/hundimento.mp3');
-    this.load.audio('success', 'assets/audios/success.mp3');
+    this.load.audio('music', 'assets/game-jump-frog/audios/swamp.wav');
+    this.load.audio('jump', 'assets/game-jump-frog/audios/jump.mp3');
+    this.load.audio('croar', 'assets/game-jump-frog/audios/croar.mp3');
+    this.load.audio('splash', 'assets/game-jump-frog/audios/hundimento.mp3');
+    this.load.audio('success', 'assets/game-jump-frog/audios/success.mp3');
   }
 
   create() {
@@ -189,7 +188,7 @@ export class Menu extends Phaser.Scene {
           <p>Salta a cualquier lugar haciendo clic con el botón principal del ratón.
           También puedes hacerlo usando las teclas tab para seleccionar la opción que crea que es  correcta y enter para verificar
           si la respuesta es correcta. Para devolverse use las techas  shift + tab</p>
-          <img src="./assets/images/teclado1.png" alt="uso de teclas flecha arriba, izquierda, derecha">
+          <img src="assets/images/teclado1.png" alt="uso de teclas flecha arriba, izquierda, derecha">
         </div>
     </div>
     `;

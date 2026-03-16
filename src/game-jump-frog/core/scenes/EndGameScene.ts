@@ -141,9 +141,9 @@ export class EndGame extends Phaser.Scene {
     imagen.setOrigin(0, 0);
     const htmlImagen = imagen.node as HTMLElement;
     if (globalState.vidas === globalState.data.length) {
-      htmlImagen.innerHTML = `<img src="assets/images/copaTrofeo.png" alt="Una copa de color amarillo" style="width: 300px; height: auto;">`;
+      htmlImagen.innerHTML = `<img src="assets/game-jump-frog/images/copaTrofeo.png" alt="Una copa de color amarillo" style="width: 300px; height: auto;">`;
     } else {
-      htmlImagen.innerHTML = `<img src="assets/images/sapoLLorando.png" alt="una rana llorando" style="width: 300px; height: auto;">`;
+      htmlImagen.innerHTML = `<img src="assets/game-jump-frog/images/sapoLLorando.png" alt="una rana llorando" style="width: 300px; height: auto;">`;
     }
 
     const score = this.add.dom(260, 400, 'div', '', '') as Phaser.GameObjects.DOMElement;

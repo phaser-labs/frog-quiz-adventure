@@ -10,8 +10,8 @@ interface DataGameFrog {
 }
 // variables globales
 class GlobalState {
-  specificMusic: boolean = false;
-  generalMusic: boolean = false;
+  specificMusic: boolean = true;
+  generalMusic: boolean = true;
   vidas: number = 0;
   puntos: number = 0;
   reload: boolean = false;
