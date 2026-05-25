@@ -15,12 +15,13 @@ interface DataGameFrog {
 }
 interface FrogJumpingProps {
   dataGameFrog: DataGameFrog[];
+  id?: string;
 }
 /**
  * El componente GameCanvas sirve como contenedor para el juego de Phaser.
  * Inicializa la instancia del juego de Phaser y se asegura de limpiar correctamente al desmontar el componente.
  */
-const FrogJumping: React.FC<FrogJumpingProps> = ({ dataGameFrog }) => {
+const FrogJumping: React.FC<FrogJumpingProps> = ({ dataGameFrog, id }) => {
   globalState.data = dataGameFrog;
   // Referencia al contenedor div para el juego
   const gameContainer = useRef<HTMLDivElement>(null);
@@ -44,7 +45,7 @@ const FrogJumping: React.FC<FrogJumpingProps> = ({ dataGameFrog }) => {
       <div
         className="gameFrog__container"
         aria-label="Juego de rana  educativa, navegue por el contenido, encontrara una pregunta  con sus posibles respuestas, seleccione la respuesta correcta usando las tecla enter.">
-        <div ref={gameContainer} className="gameFrog__game-container" />
+        <div id={id} ref={gameContainer} className="gameFrog__game-container" />
       </div>
     </>
   );

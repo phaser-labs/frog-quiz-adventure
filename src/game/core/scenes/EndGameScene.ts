@@ -141,9 +141,9 @@ export class EndGame extends Phaser.Scene {
     imagen.setOrigin(0, 0);
     const htmlImagen = imagen.node as HTMLElement;
     if (globalState.vidas === globalState.data.length) {
-      htmlImagen.innerHTML = `<img src="assets/images/copaTrofeo.png" alt="Una copa de color amarillo" style="width: 300px; height: auto;">`;
+      htmlImagen.innerHTML = `<img src="./assets/images/copaTrofeo.png" alt="Una copa de color amarillo" style="width: 300px; height: auto;">`;
     } else {
-      htmlImagen.innerHTML = `<img src="assets/images/sapoLLorando.png" alt="una rana llorando" style="width: 300px; height: auto;">`;
+      htmlImagen.innerHTML = `<img src="./assets/images/sapoLLorando.png" alt="una rana llorando" style="width: 300px; height: auto;">`;
     }
 
     const score = this.add.dom(260, 400, 'div', '', '') as Phaser.GameObjects.DOMElement;
@@ -181,7 +181,8 @@ export class EndGame extends Phaser.Scene {
       duration: 4000, // Duración de 2 segundos (ajusta según necesites)
       ease: 'Linear',
       onUpdate: (tween) => {
-        const currentScore = Math.floor(tween.getValue());
+        const tweenValue = tween.getValue();
+        const currentScore = Math.floor(tweenValue !== null ? tweenValue : 0);
         // Actualiza el texto del highscore en el DOM
         const highscoreEl = document.getElementById('score');
         if (highscoreEl) {
