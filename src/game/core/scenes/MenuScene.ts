@@ -42,29 +42,29 @@ export class Menu extends Phaser.Scene {
       percentText.destroy();
       assetText.destroy();
     });
-    this.load.image('whater', './assets/images/background.png');
-    this.load.image('frog', './assets/images/frog.png');
-    this.load.text('bordeBox', './assets/images/borderBox.svg');
-    this.load.image('water', './assets/images/background.png');
-    this.load.spritesheet('rana', './assets/images/rana.png', {
+    this.load.image('whater', './assets/images/frogQuiz/images/background.png');
+    this.load.image('frog', './assets/images/frogQuiz/images/frog.png');
+    this.load.text('bordeBox', './assets/images/frogQuiz/images/borderBox.svg');
+    this.load.image('water', './assets/images/frogQuiz/images/background.png');
+    this.load.spritesheet('rana', './assets/images/frogQuiz/images/rana.png', {
       frameWidth: 142,
       frameHeight: 218
     });
     this.load.spritesheet(
       'hundimiento2',
-      './assets/images/hundimiento2.png',
+      './assets/images/frogQuiz/images/hundimiento2.png',
       {
         frameWidth: 177,
         frameHeight: 171
       }
     );
-    this.load.image('orilla', './assets/images/orilla.png');
+    this.load.image('orilla', './assets/images/frogQuiz/images/orilla.png');
     // precargar sonidos
-    this.load.audio('music', './assets/audios/swamp.wav');
-    this.load.audio('jump', './assets/audios/jump.mp3');
-    this.load.audio('croar', './assets/audios/croar.mp3');
-    this.load.audio('splash', './assets/audios/hundimento.mp3');
-    this.load.audio('success', './assets/audios/success.mp3');
+    this.load.audio('music', './assets/images/frogQuiz/audios/swamp.wav');
+    this.load.audio('jump', './assets/images/frogQuiz/audios/jump.mp3');
+    this.load.audio('croar', './assets/images/frogQuiz/audios/croar.mp3');
+    this.load.audio('splash', './assets/images/frogQuiz/audios/hundimento.mp3');
+    this.load.audio('success', './assets/images/frogQuiz/audios/success.mp3');
   }
 
   create() {
@@ -184,7 +184,7 @@ export class Menu extends Phaser.Scene {
             <p>Salta a cualquier lugar haciendo clic con el botón principal del ratón.
             También puedes hacerlo usando las teclas tab para seleccionar la opción que crea que es correcta y enter para verificar
             si la respuesta es correcta. Para devolverse use las techas shift + tab</p>
-            <img src="./assets/images/teclado1.png" alt="uso de teclas flecha arriba, izquierda, derecha">
+            <img src="./assets/images/frogQuiz/images/teclado1.png" alt="uso de teclas flecha arriba, izquierda, derecha">
           </div>
         </div>
       </div>
