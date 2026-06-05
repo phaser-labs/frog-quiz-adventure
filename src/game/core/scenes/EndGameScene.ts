@@ -9,6 +9,9 @@ export class EndGame extends Phaser.Scene {
   }
   preload() {}
   create() {
+    window.dispatchEvent(
+      new CustomEvent('informationQuestion', { detail: globalState.data.length + 1 })
+    );
     this.add.image(480, 250, 'whater').setScale(1.2);
     this.add.image(400, 100, 'orilla').setScale(0.8);
     const contenedor = this.add.dom(40, -60, 'div', '', '') as Phaser.GameObjects.DOMElement;

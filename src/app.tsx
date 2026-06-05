@@ -105,11 +105,74 @@ const dataGameFrog: DataGameFrog[] = [
         state: 'wrong'
       }
     ]
+  },
+  {
+    id: 5,
+    question: '¿Qué se muestra en el árbol de problemas?-PRUEBA',
+    options: [
+      {
+        id: '4-1',
+        label: 'El problema central, sus causas y sus efectos.',
+        state: 'wrong'
+      },
+      {
+        id: '4-2',
+        label: 'Las soluciones propuestas para el problema.',
+        state: 'success'
+      },
+      {
+        id: '4-3',
+        label: 'Los medios y fines.',
+        state: 'wrong'
+      }
+    ]
+  },
+  {
+    id: 6,
+    question: '¿Qué se muestra en el árbol de problemas?-PRUEBA-2',
+    options: [
+      {
+        id: '4-1',
+        label: 'El problema central, sus causas y sus efectos.',
+        state: 'wrong'
+      },
+      {
+        id: '4-2',
+        label: 'Las soluciones propuestas para el problema.',
+        state: 'success'
+      },
+      {
+        id: '4-3',
+        label: 'Los medios y fines.',
+        state: 'wrong'
+      }
+    ]
+  },
+  {
+    id: 7,
+    question: '¿Qué se muestra en el árbol de problemas?-PRUEBA-3',
+    options: [
+      {
+        id: '4-1',
+        label: 'El problema central, sus causas y sus efectos.',
+        state: 'wrong'
+      },
+      {
+        id: '4-2',
+        label: 'Las soluciones propuestas para el problema.',
+        state: 'success'
+      },
+      {
+        id: '4-3',
+        label: 'Los medios y fines.',
+        state: 'wrong'
+      }
+    ]
   }
 ];
 function App() {
     const [isOpen, setIsOpen] = useState<string | null>(null);
-  const [currentQuestion, setcurrentQuestion] = useState(1);
+  const [currentQuestion, setcurrentQuestion] = useState(0);
   // const [result, setResult] = useState<boolean | null>(null);
   useEffect(() => {
     const handleCurrentQuestion = (event: Event) => {

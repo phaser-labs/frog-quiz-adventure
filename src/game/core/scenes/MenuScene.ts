@@ -328,6 +328,8 @@ export class Menu extends Phaser.Scene {
 
     loadSwitchState();
     loadSwitchState2();
+
+    window.dispatchEvent(new CustomEvent('informationQuestion', { detail: 0 }));
   }
 
   update() {}
