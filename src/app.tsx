@@ -106,92 +106,38 @@ const dataGameFrog: DataGameFrog[] = [
       }
     ]
   },
-  {
-    id: 5,
-    question: '¿Qué se muestra en el árbol de problemas?-PRUEBA',
-    options: [
-      {
-        id: '4-1',
-        label: 'El problema central, sus causas y sus efectos.',
-        state: 'wrong'
-      },
-      {
-        id: '4-2',
-        label: 'Las soluciones propuestas para el problema.',
-        state: 'success'
-      },
-      {
-        id: '4-3',
-        label: 'Los medios y fines.',
-        state: 'wrong'
-      }
-    ]
-  },
-  {
-    id: 6,
-    question: '¿Qué se muestra en el árbol de problemas?-PRUEBA-2',
-    options: [
-      {
-        id: '4-1',
-        label: 'El problema central, sus causas y sus efectos.',
-        state: 'wrong'
-      },
-      {
-        id: '4-2',
-        label: 'Las soluciones propuestas para el problema.',
-        state: 'success'
-      },
-      {
-        id: '4-3',
-        label: 'Los medios y fines.',
-        state: 'wrong'
-      }
-    ]
-  },
-  {
-    id: 7,
-    question: '¿Qué se muestra en el árbol de problemas?-PRUEBA-3',
-    options: [
-      {
-        id: '4-1',
-        label: 'El problema central, sus causas y sus efectos.',
-        state: 'wrong'
-      },
-      {
-        id: '4-2',
-        label: 'Las soluciones propuestas para el problema.',
-        state: 'success'
-      },
-      {
-        id: '4-3',
-        label: 'Los medios y fines.',
-        state: 'wrong'
-      }
-    ]
-  }
+
 ];
 function App() {
     const [isOpen, setIsOpen] = useState<string | null>(null);
   const [currentQuestion, setcurrentQuestion] = useState(0);
+  const [gameResult, setGameResult] = useState<'win' | 'lose' | null>(null);
   // const [result, setResult] = useState<boolean | null>(null);
   useEffect(() => {
     const handleCurrentQuestion = (event: Event) => {
       const customEvent = event as CustomEvent;
       setcurrentQuestion(customEvent.detail);
-
-      // Puedes actualizar estados, puntaje, mostrar feedback, etc.
+      if (customEvent.detail === 0) {
+        setGameResult(null);
+      }
     };
     const handleCurrentResult = (event: Event) => {
       const customEvent = event as CustomEvent;
       handleOpenModal(customEvent.detail);
       // setResult();
     };
+    const handleEndGame = (event: Event) => {
+      const customEvent = event as CustomEvent<{ won: boolean }>;
+      setGameResult(customEvent.detail.won ? 'win' : 'lose');
+    };
     window.addEventListener('informationQuestion', handleCurrentQuestion);
     window.addEventListener('informationResult', handleCurrentResult);
+    window.addEventListener('informationEndGame', handleEndGame);
 
     return () => {
       window.removeEventListener('informationQuestion', handleCurrentQuestion);
       window.removeEventListener('informationResult', handleCurrentResult);
+      window.removeEventListener('informationEndGame', handleEndGame);
     };
   });
 
@@ -219,6 +165,15 @@ function App() {
 
 
 
+  const audioKey = gameResult ? `${currentQuestion}-${gameResult}` : currentQuestion;
+  const resultSuffix = gameResult === 'win' ? 'ganaste' : gameResult === 'lose' ? 'perdiste' : null;
+  const a11ySrc = resultSuffix
+    ? `assets/audios/ally/aud_des_ova-26_sld-17__${resultSuffix}.mp3`
+    : `assets/audios/ally/aud_des_ova-26_sld-17__${currentQuestion}.mp3`;
+  const mainSrc = resultSuffix
+    ? `assets/audios/aud_ova-26_sld-17_${resultSuffix}.mp3`
+    : `assets/audios/aud_ova-26_sld-17_${currentQuestion}.mp3`;
+
   return (
      <>
       <div
@@ -228,13 +183,13 @@ function App() {
         //   contentURL: `vid_int_ova-26_sld-17_${currentQuestion}.mp4`
         // }}
         >
-        <Audio key={currentQuestion} a11y src={`assets/audios/ally/aud_des_ova-26_sld-17__${currentQuestion}.mp3`} />
+        <Audio key={audioKey} a11y src={a11ySrc} />
         <Row justifyContent="center" alignItems="center">
           <Col xs="12" hd="8">
             <Audio
               addClass="u-mb-2"
-              key={currentQuestion}
-              src={`assets/audios/aud_ova-26_sld-17_${currentQuestion}.mp3`}
+              key={audioKey}
+              src={mainSrc}
             />
             <FrogJumping dataGameFrog={dataGameFrog}></FrogJumping>
           </Col>
